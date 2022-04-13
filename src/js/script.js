@@ -22,6 +22,12 @@ const styles = {
   ratingHigh: 'linear-gradient(to bottom, #ff0084 0%,#ff0084 100%)',
 };
 
+const ratingScale = {
+  low: 6,
+  medium: 8,
+  high: 9,
+};
+
 const classList = {
   product: {
     favorite: 'favorite',
@@ -136,11 +142,11 @@ class BookProduct {
     const thisBookProduct = this;
     const rating = thisBookProduct.data.rating;
     const ratingBarWidth = (rating / 10 * 100) + '%';
-    if (rating < 6) {
+    if (rating < ratingScale.low) {
       thisBookProduct.data.ratingBg = styles.ratingLow;
-    } else if (rating > 6 && rating <= 8) {
+    } else if (rating > ratingScale.low && rating <= ratingScale.medium) {
       thisBookProduct.data.ratingBg = styles.ratingMed;
-    } else if (rating > 8 && rating <= 9) {
+    } else if (rating > ratingScale.medium && rating <= ratingScale.high) {
       thisBookProduct.data.ratingBg = styles.ratingMedHigh;
     } else {
       thisBookProduct.data.ratingBg = styles.ratingHigh;
